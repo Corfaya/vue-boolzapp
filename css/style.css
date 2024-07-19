@@ -28,6 +28,20 @@ body {
     color: #000;
 }
 
+#main-chat {
+    overflow-y: auto;
+    padding: 10px;
+}
+
+#input-section span {
+    background-color: transparent;
+}
+
+.overflow {
+    height: calc(100vh - 232px);
+    overflow-y: auto;
+}
+
 .bg-grey {
     background-color: #E5E6E8;
 }
@@ -55,6 +69,8 @@ body {
 .bg-image {
     background-image: url("../img/mine.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .message-received, .message-sent {
