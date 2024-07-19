@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #009687a4;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #009687;
+    cursor: pointer;
+}
+
 body {
     height: 100vh;
 }
@@ -15,7 +28,8 @@ body {
     padding: 20px;
 }
 
-.col-8, .col-4 {
+.col-8,
+.col-4 {
     border: 1px solid grey;
     padding: 0;
 }
@@ -29,7 +43,6 @@ body {
 }
 
 #main-chat {
-    overflow-y: auto;
     padding: 10px;
 }
 
@@ -47,7 +60,7 @@ body {
 }
 
 .bg-azure {
-    background-color: #8DD7FA;  
+    background-color: #8DD7FA;
 }
 
 .fs_10 {
@@ -73,9 +86,13 @@ body {
     background-position: center;
 }
 
-.message-received, .message-sent {
+.message-received,
+.message-sent {
     border-radius: 10px;
     min-width: 180px;
+    max-width: 600px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .message-received {
