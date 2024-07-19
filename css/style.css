@@ -66,6 +66,14 @@ body {
     background-color: #8DD7FA;
 }
 
+li {
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #c0c0c0b7;
+}
+
 .fs_10 {
     font-size: 10px;
 }
