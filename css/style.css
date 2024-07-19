@@ -17,12 +17,25 @@ body {
 
 .col-8, .col-4 {
     border: 1px solid grey;
+    padding: 0;
 }
 
-.profile img {
+.profile img, .list img {
     width: 50px;
 }
 
 .bg-grey {
     background-color: #E5E6E8;
+}
+
+.bg-azure {
+    background-color: #8DD7FA;  
+}
+
+.fs_14 {
+    font-size: 14px;
+}
+
+.text_azure {
+    color: #8DD7FA
 }
