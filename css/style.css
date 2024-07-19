@@ -20,7 +20,7 @@ body {
     padding: 0;
 }
 
-.profile img, .list img {
+.profile img {
     width: 50px;
 }
 
@@ -33,7 +33,11 @@ body {
 }
 
 .fs_14 {
-    font-size: 14px;
+    font-size: 12px;
+}
+
+.fs_16 {
+    font-size: 16px;
 }
 
 .text_azure {
