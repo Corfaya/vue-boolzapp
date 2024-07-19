@@ -24,12 +24,20 @@ body {
     width: 50px;
 }
 
+.input-group button:hover {
+    color: #000;
+}
+
 .bg-grey {
     background-color: #E5E6E8;
 }
 
 .bg-azure {
     background-color: #8DD7FA;  
+}
+
+.fs_10 {
+    font-size: 10px;
 }
 
 .fs_14 {
@@ -47,4 +55,17 @@ body {
 .bg-image {
     background-image: url("../img/mine.jpg");
     background-size: cover;
+}
+
+.message-received, .message-sent {
+    border-radius: 10px;
+    min-width: 180px;
+}
+
+.message-received {
+    background-color: #fff;
+}
+
+.message-sent {
+    background-color: #D2F5BB;
 }
