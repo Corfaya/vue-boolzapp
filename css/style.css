@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+#app {
+    height: 100%;
+    background-color: #009687;
+    background-image: linear-gradient(to bottom, #009687 0px, #009687 100px, #D7D8D3 20px, #D7D8D3 200px);
+    padding: 20px;
+}
+
+.col-8, .col-4 {
+    border: 1px solid grey;
+}
+
+.profile img {
+    width: 50px;
+}
+
+.bg-grey {
+    background-color: #E5E6E8;
+}
