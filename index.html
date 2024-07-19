@@ -97,42 +97,14 @@
                                 </div>
                                 <!-- Main chat -->
                                 <div id="main-chat" class="overflow d-flex flex-column">
-                                    <!-- <div class="d-flex justify-content-end">
-                                        <div class="message-sent my-2 p-1 border">
-                                            <p class="m-1">Hai portato a spasso il cane?</p>
-                                            <p class="m-0 fs_10 text-end text-secondary">15:30</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-end">
-                                        <div class="message-sent my-2 p-1 border">
-                                            <p class="m-1">Ricordati di stendere i panni</p>
-                                            <p class="m-0 fs_10 text-end text-secondary">15:50</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-start">
-                                        <div class="message-received my-2 p-1 border">
-                                            <p class="m-1">Tutto fatto!</p>
-                                            <p class="m-0 fs_10 text-end text-secondary">15:50</p>
-                                        </div>
-                                    </div> -->
-                                    <div>
-                                        <div class="my-2 p-1 border" :class=" contacts[0].messages[0].status == 'sent' ? 'message-sent float-end' : 'message-received float-start' ">
-                                            <p class="m-1">Prova</p>
+                                   
+                                    <div v-for="message, index in contacts[active].messages">
+                                        <div class="my-2 p-1 border" :class=" message.status == 'sent' ? 'message-sent float-end' : 'message-received float-start' ">
+                                            <p class="m-1"> {{ message.message }}</p>
                                             <p class="m-0 fs_10 text-end text-secondary"></p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div class="my-2 p-1 border" :class=" contacts[0].messages[1].status == 'sent' ? 'message-sent float-end' : 'message-received float-start' ">
-                                            <p class="m-1">Prova</p>
-                                            <p class="m-0 fs_10 text-end text-secondary"></p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="my-2 p-1 border" :class=" contacts[0].messages[2].status == 'sent' ? 'message-sent float-end' : 'message-received float-start' ">
-                                            <p class="m-1">Prova</p>
-                                            <p class="m-0 fs_10 text-end text-secondary"></p>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="d-flex flex-column justify-content-between">
