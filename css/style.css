@@ -43,3 +43,8 @@ body {
 .text_azure {
     color: #8DD7FA
 }
+
+.bg-image {
+    background-image: url("../img/mine.jpg");
+    background-size: cover;
+}
