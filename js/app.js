@@ -4,6 +4,7 @@ createApp({
   data() {
     return {
       active: 0,
+      user_msg: undefined,
       contacts: [
         {
           name: "Michele",
@@ -171,7 +172,17 @@ createApp({
   },
   methods: {
     openChat(i) {
-        this.active = i
-    }
+      this.active = i;
+    },
+    send() {
+      let text_message = {
+        message: this.user_msg,
+        status: "sent",
+      }
+      if (!this.user_msg == "") {
+        this.contacts[this.active].messages.push(text_message);
+      }
+      this.user_msg = undefined;
+    },
   },
 }).mount("#app");

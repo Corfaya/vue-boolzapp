@@ -119,8 +119,8 @@
                                                 <i class="fa-regular fa-face-smile"></i>
                                             </span>
                                         </div>
-                                        <input type="text" class="form-control rounded"
-                                            placeholder="Scrivi un messaggio">
+                                        <input v-model="user_msg" type="text" class="form-control rounded"
+                                            placeholder="Scrivi un messaggio" @keyup.enter="send()">
                                         <div class="input-group-append">
                                             <span class="input-group-text mx-3 border-0 text-secondary">
                                                 <i class="fa-solid fa-microphone"></i>
