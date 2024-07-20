@@ -167,6 +167,29 @@ createApp({
             },
           ],
         },
+        {
+          name: "Simone",
+          avatar: "./img/avatar_2.jpg",
+          visible: true,
+          messages: [
+            {
+              date: "10/01/2020 19:30:55",
+              message: "Mi ricordi quando compi gli anni?",
+              status: "received",
+            },
+            {
+              date: "10/01/2020 19:50:00",
+              message: "Seriamente non ti ricordi...?",
+              status: "sent",
+            },
+            {
+              date: "10/01/2020 19:51:00",
+              message: "Ops",
+              status: "received",
+            },
+          ],
+        }
+        
       ],
     };
   },
