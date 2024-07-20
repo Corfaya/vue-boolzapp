@@ -52,7 +52,7 @@ ul {
 
 #main-chat {
     padding: 10px;
-    max-height: calc(100vh - 230px);
+    max-height: calc(100vh - 159px);
 }
 
 #input-section span {
@@ -98,6 +98,10 @@ li:hover {
 
 .bg-image {
     background-image: url("../img/mine.jpg");
+}
+
+.bord {
+    border-top: 1px solid #dfdddd;
 }
 
 .message-received,

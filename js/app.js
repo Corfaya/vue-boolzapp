@@ -5,6 +5,7 @@ createApp({
     return {
       active: 0,
       user_msg: undefined,
+      filter: "", // when user writes in input, search method check if name's contact includes the text wrote
       contacts: [
         {
           name: "Michele",
@@ -215,5 +216,10 @@ createApp({
       }
       this.user_msg = undefined;
     },
+    search(contact) {
+      // code below is TRUE ? return it and show filtered li : hide filtered li
+      return contact.name.toLowerCase().includes(this.filter.toLowerCase())
+      // filter = "" => in absence of filters, all contacts'll be shown, because condition is always true
+    }
   },
 }).mount("#app");
