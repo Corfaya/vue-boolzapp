@@ -82,7 +82,7 @@
                             <div class="d-flex flex-column">
                                 <div class="d-flex justify-content-between align-items-center bg-grey">
                                     <div class="profile d-flex p-2">
-                                        <img src="./img/avatar_1.jpg" alt="my_profile"
+                                        <img :src="contacts[active].avatar" alt="my_profile"
                                             class="img-fluid object-fit-contain border rounded-circle">
                                         <div class="d-flex justify-content-center flex-column">
                                             <h3 class="m-2 my-0 fs-5"> {{ contacts[active].name }} </h3>

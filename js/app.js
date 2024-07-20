@@ -175,12 +175,20 @@ createApp({
       this.active = i;
     },
     send() {
-      let text_message = {
+      let user_message = {
         message: this.user_msg,
         status: "sent",
       }
+      let pc_message = {
+        message: "Ok",
+        status: "received",
+      }
       if (!this.user_msg == "") {
-        this.contacts[this.active].messages.push(text_message);
+        this.contacts[this.active].messages.push(user_message);
+        // imposta 1 sec di timeout e ricevi risposta
+        setTimeout(() => {
+          this.contacts[this.active].messages.push(pc_message)
+        }, 1000);
       }
       this.user_msg = undefined;
     },
