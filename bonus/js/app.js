@@ -238,6 +238,8 @@ createApp({
       }
       if (!this.user_msg == "") {
         this.contacts[this.active].messages.push(user_message)
+        // active contact shifted on top
+        this.activeContactTop(this.active)
         let waiting = document.getElementById("waiting")
         waiting.innerHTML = "Online"
         // push into timeout array
@@ -266,5 +268,11 @@ createApp({
       this.timeoutArray.forEach(timeout => clearTimeout(timeout))
       this.timeoutArray = []
     },
+    // when user writes in a specific chat, remove that active contact from list and put it on 0 position with unshift array method
+    activeContactTop(i) {
+      const activeContact = this.contacts.splice(i, 1)[0]
+      this.contacts.unshift(activeContact)
+      this.active = 0
+    }
   },
 }).mount("#app");
