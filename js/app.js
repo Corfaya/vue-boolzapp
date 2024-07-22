@@ -6,6 +6,16 @@ createApp({
       active: 0,
       user_msg: undefined,
       filter: "", // when user writes in input, search method check if name's contact includes the text wrote
+      answers: [
+        "Come vuoi",
+        "Non so di cosa stai parlando",
+        "😂",
+        "Ok",
+        "Ti scrivo dopo, ora non posso risponderti",
+        "Guarda, preferirei chiamarti se posso",
+        "Scusa ma chi sei?",
+        "Ti riscrivo dopo, sono in riunione"
+      ],
       contacts: [
         {
           name: "Michele",
@@ -189,12 +199,15 @@ createApp({
               status: "received",
             },
           ],
-        }
-        
+        }        
       ],
     };
   },
   methods: {
+    randomAnswers() {
+      const random = Math.floor(Math.random() * this.answers.length)
+      return this.answers[random]
+    },
     openChat(i) {
       this.active = i;
     },
@@ -204,7 +217,7 @@ createApp({
         status: "sent",
       }
       let pc_message = {
-        message: "Ok",
+        message: this.randomAnswers(),
         status: "received",
       }
       if (!this.user_msg == "") {
