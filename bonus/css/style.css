@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #009687a4;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #009687;
+    cursor: pointer;
+}
+
+body {
+    height: 100vh;
+}
+
+#app {
+    height: 100%;
+    background-color: #009687;
+    background-image: linear-gradient(to bottom, #009687 0px, #009687 100px, #D7D8D3 20px, #b4b4b4 4000px);
+    padding: 20px;
+}
+
+.col-8,
+.col-4 {
+    padding: 0;
+}
+
+.col-4 {
+    border-right: 1px solid #dfdddd;
+}
+
+ul {
+    max-height: calc(100vh - 230px);
+    min-height: calc(100vh - 230px);
+}
+
+.profile img {
+    width: 50px;
+}
+
+.input-group button:hover {
+    color: #000;
+}
+
+#main-chat {
+    padding: 10px;
+    max-height: calc(100vh - 159px);
+}
+
+#input-section span {
+    background-color: transparent;
+}
+
+.overflow {    
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.bg-grey {
+    background-color: #E5E6E8;
+}
+
+.bg-azure {
+    background-color: #8DD7FA;
+}
+
+li {
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #c0c0c0b7;
+}
+
+.fs_10 {
+    font-size: 10px;
+}
+
+.fs_14 {
+    font-size: 12px;
+}
+
+.fs_16 {
+    font-size: 16px;
+}
+
+.text_azure {
+    color: #8DD7FA
+}
+
+.bg-image {
+    background-image: url("../img/mine.jpg");
+}
+
+.bord {
+    border-top: 1px solid #dfdddd;
+}
+
+.message-received,
+.message-sent {
+    border-radius: 10px;
+    min-width: 180px;
+    max-width: 600px;
+    text-align: justify;
+    word-wrap: break-word;
+}
+
+.message-received {
+    background-color: #fff;
+}
+
+.message-sent {
+    background-color: #D2F5BB;
+}
