@@ -71,7 +71,6 @@
                                 </div>
 
                                 <p class="fs_14 text-end">{{ contact.messages.length > 0 ? dateWithoutSec(contact.messages[contact.messages.length - 1].date) : '' }}</p>
-
                         </li>
                     </ul>
                 </div>
@@ -87,7 +86,7 @@
                                             class="img-fluid object-fit-contain border rounded-circle">
                                         <div class="d-flex justify-content-center flex-column">
                                             <h3 class="m-2 my-0 fs-5"> {{ contacts[active].name }} </h3>
-                                            <p id="waiting" class="my-0 mx-2 fs_14">Ultimo accesso oggi alle {{contacts[active].messages[active].date.split(" ")[1]}}</p>
+                                            <p id="waiting" class="my-0 mx-2 fs_14">Ultimo accesso oggi alle {{ contacts[active] && contacts[active].messages.length > 0 ? dateWithoutSec(contacts[active].messages[contacts[active].messages.length - 1].date) : '' }}</p>
                                         </div>
                                     </div>
                                     <div class="icons-profile p-3 d-flex">

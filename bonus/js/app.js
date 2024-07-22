@@ -203,6 +203,8 @@ createApp({
           ],
         }        
       ],
+      // empty array for timeouts of send() function
+      timeoutArray: []
     };
   },
   methods: {
@@ -217,6 +219,8 @@ createApp({
       return this.answers[random]
     },
     openChat(i) {
+      //clear all timeouts
+      this.stopTimeOut()
       this.active = i;
     },
     send() {
@@ -236,19 +240,19 @@ createApp({
         this.contacts[this.active].messages.push(user_message)
         let waiting = document.getElementById("waiting")
         waiting.innerHTML = "Online"
-
-        setTimeout(() => {
+        // push into timeout array
+        this.timeoutArray.push(setTimeout(() => {
           waiting.innerHTML = "Sta scrivendo"
-        }, 2000),
+        }, 2000))
         
-        setTimeout(() => {
+        this.timeoutArray.push(setTimeout(() => {
           waiting.innerHTML = "Online"
           this.contacts[this.active].messages.push(pc_message)
-        }, 3000),
+        }, 3000))
         
-        setTimeout(() => {
+        this.timeoutArray.push(setTimeout(() => {
           waiting.innerHTML = "Ultimo accesso oggi alle " + today
-        }, 4000)
+        }, 4000))
       }
       this.user_msg = "";
     },
@@ -256,6 +260,11 @@ createApp({
       // code below is TRUE ? return it and show filtered li : hide filtered li
       return contact.name.toLowerCase().includes(this.filter.toLowerCase())
       // filter = "" => in absence of filters, all contacts'll be shown, because condition is always true
-    }
+    },
+    // clearTimeOut
+    stopTimeOut() {
+      this.timeoutArray.forEach(timeout => clearTimeout(timeout))
+      this.timeoutArray = []
+    },
   },
 }).mount("#app");
