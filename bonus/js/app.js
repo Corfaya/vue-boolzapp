@@ -206,6 +206,9 @@ createApp({
     };
   },
   methods: {
+    dateWithoutSec(el) { // date format function used in html
+      return el.split(" ")[1].slice(0, 5);
+    },
     hours() {
       return DateTime.now().toFormat("HH:mm")
     },
