@@ -11,12 +11,14 @@ createApp({
         "Come vuoi",
         "Non so di cosa stai parlando",
         "😂",
-        "Ok",
-        "Ti scrivo dopo, ora non posso risponderti",
+        "Ok...",
+        "Ti scrivo dopo, ora non posso",
         "Guarda, preferirei chiamarti se posso",
         "Scusa ma chi sei?",
         "Ti avevo chiesto di non scrivermi più",
-        "Parliamo a lavoro, ora sto guidando"
+        "Ho il covid",
+        "Sto cercando di fixare questo codice, ci sentiamo dopo",
+        "Ma in che senso?"
       ],
       contacts: [
         {
