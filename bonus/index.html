@@ -66,11 +66,11 @@
                                         <h3 class="mx-2 my-0 fs_16">
                                             {{ contact.name }}
                                         </h3>
-                                        <p class="my-0 mx-2 fs_14">Ultimo accesso oggi alle </p>
+                                        <p class="my-0 mx-2 fs_14"> {{ contact.messages.length > 0 ? contact.messages[contact.messages.length - 1].message : ''  }} </p>
                                     </div>
                                 </div>
 
-                                <p class="fs_14 text-end"></p>
+                                <p class="fs_14 text-end">{{ contact.messages.length > 0 ? contact.messages[contact.messages.length - 1].date.split(" ")[1] : '' }}</p>
 
                         </li>
                     </ul>

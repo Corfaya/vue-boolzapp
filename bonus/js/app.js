@@ -206,10 +206,9 @@ createApp({
     };
   },
   methods: {
-    // hours() {
-    //   const hoursMinutesToday =  DateTime.now().toFormat("HH:mm")
-    //   return hoursMinutesToday
-    // },
+    hours() {
+      return DateTime.now().toFormat("HH:mm")
+    },
     randomAnswers() {
       const random = Math.floor(Math.random() * this.answers.length)
       return this.answers[random]
@@ -218,33 +217,37 @@ createApp({
       this.active = i;
     },
     send() {
-      let hoursMinutesToday = DateTime.now().toFormat("HH:mm")
+      const todayDate = DateTime.now().toFormat("dd/mm/yyyy HH:mm")
+      let today = this.hours()
       let user_message = {
         message: this.user_msg,
         status: "sent",
-        date: hoursMinutesToday
+        date: todayDate
       }
       let pc_message = {
         message: this.randomAnswers(),
         status: "received",
-        date: hoursMinutesToday
+        date: todayDate
       }
       if (!this.user_msg == "") {
         this.contacts[this.active].messages.push(user_message)
         let waiting = document.getElementById("waiting")
         waiting.innerHTML = "Online"
+
         setTimeout(() => {
           waiting.innerHTML = "Sta scrivendo"
         }, 2000),
+        
         setTimeout(() => {
           waiting.innerHTML = "Online"
           this.contacts[this.active].messages.push(pc_message)
-        }, 5000),
+        }, 3000),
+        
         setTimeout(() => {
-          waiting.innerHTML = "Ultimo accesso oggi alle " + hoursMinutesToday
-        }, 7000)
+          waiting.innerHTML = "Ultimo accesso oggi alle " + today
+        }, 4000)
       }
-      this.user_msg = undefined;
+      this.user_msg = "";
     },
     search(contact) {
       // code below is TRUE ? return it and show filtered li : hide filtered li
