@@ -4,7 +4,7 @@ createApp({
   data() {
     return {
       active: 0,
-      user_msg: undefined,
+      user_msg: "",
       filter: "", // when user writes in input, search method check if name's contact includes the text wrote
       answers: [
         "Come vuoi",
@@ -14,7 +14,8 @@ createApp({
         "Ti scrivo dopo, ora non posso risponderti",
         "Guarda, preferirei chiamarti se posso",
         "Scusa ma chi sei?",
-        "Ti riscrivo dopo, sono in riunione"
+        "Ti avevo chiesto di non scrivermi più",
+        "Parliamo a lavoro, ora sto guidando"
       ],
       contacts: [
         {
@@ -221,11 +222,10 @@ createApp({
         status: "received",
       }
       if (!this.user_msg == "") {
-        this.contacts[this.active].messages.push(user_message);
-        // imposta 1 sec di timeout e ricevi risposta
+        this.contacts[this.active].messages.push(user_message)
         setTimeout(() => {
           this.contacts[this.active].messages.push(pc_message)
-        }, 1000);
+        }, 1000)
       }
       this.user_msg = undefined;
     },

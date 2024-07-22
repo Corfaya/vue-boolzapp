@@ -123,7 +123,10 @@
                                         <input v-model="user_msg" type="text" class="form-control rounded"
                                             placeholder="Scrivi un messaggio" @keyup.enter="send()">
                                         <div class="input-group-append">
-                                            <span class="input-group-text mx-3 border-0 text-secondary">
+                                            <span v-if="!user_msg == ''" class="input-group-text mx-3 border-0 text-secondary">
+                                                <i class="fa-solid fa-paper-plane"></i>
+                                            </span>
+                                            <span v-else class="input-group-text mx-3 border-0 text-secondary">
                                                 <i class="fa-solid fa-microphone"></i>
                                             </span>
                                         </div>
@@ -140,6 +143,7 @@
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
 </body>
 
