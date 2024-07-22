@@ -206,10 +206,10 @@ createApp({
     };
   },
   methods: {
-    hours() {
-      const hoursMinutesToday =  DateTime.now().toFormat("HH:mm")
-      return hoursMinutesToday
-    },
+    // hours() {
+    //   const hoursMinutesToday =  DateTime.now().toFormat("HH:mm")
+    //   return hoursMinutesToday
+    // },
     randomAnswers() {
       const random = Math.floor(Math.random() * this.answers.length)
       return this.answers[random]
@@ -218,19 +218,31 @@ createApp({
       this.active = i;
     },
     send() {
+      let hoursMinutesToday = DateTime.now().toFormat("HH:mm")
       let user_message = {
         message: this.user_msg,
         status: "sent",
+        date: hoursMinutesToday
       }
       let pc_message = {
         message: this.randomAnswers(),
         status: "received",
+        date: hoursMinutesToday
       }
       if (!this.user_msg == "") {
         this.contacts[this.active].messages.push(user_message)
+        let waiting = document.getElementById("waiting")
+        waiting.innerHTML = "Online"
         setTimeout(() => {
+          waiting.innerHTML = "Sta scrivendo"
+        }, 2000),
+        setTimeout(() => {
+          waiting.innerHTML = "Online"
           this.contacts[this.active].messages.push(pc_message)
-        }, 1000)
+        }, 5000),
+        setTimeout(() => {
+          waiting.innerHTML = "Ultimo accesso oggi alle " + hoursMinutesToday
+        }, 7000)
       }
       this.user_msg = undefined;
     },
