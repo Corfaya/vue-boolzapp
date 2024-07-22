@@ -37,7 +37,7 @@ body {
     border-right: 1px solid #dfdddd;
 }
 
-ul {
+.contacts {
     max-height: calc(100vh - 230px);
     min-height: calc(100vh - 230px);
 }

@@ -53,7 +53,7 @@
                     </div>
 
                     <!-- list section -->
-                    <ul class="list-unstyled bg-white m-0 overflow">
+                    <ul class="list-unstyled bg-white m-0 overflow contacts">
                         <!-- DEFAULT: v-show="search(contact)" === true for each contact -->
                         <li v-for="(contact, index) in contacts" @click="openChat(index)" v-show="search(contact)">
                             <div class="profile d-flex justify-content-between align-items-center py-3 px-3 bord">
@@ -66,11 +66,13 @@
                                         <h3 class="mx-2 my-0 fs_16">
                                             {{ contact.name }}
                                         </h3>
-                                        <p class="my-0 mx-2 fs_14"> {{ contact.messages.length > 0 ? contact.messages[contact.messages.length - 1].message : ''  }} </p>
+                                        <p class="my-0 mx-2 fs_14"> {{ contact.messages.length > 0 ?
+                                            contact.messages[contact.messages.length - 1].message : '' }} </p>
                                     </div>
                                 </div>
 
-                                <p class="fs_14 text-end">{{ contact.messages.length > 0 ? dateWithoutSec(contact.messages[contact.messages.length - 1].date) : '' }}</p>
+                                <p class="fs_14 text-end">{{ contact.messages.length > 0 ?
+                                    dateWithoutSec(contact.messages[contact.messages.length - 1].date) : '' }}</p>
                         </li>
                     </ul>
                 </div>
@@ -86,7 +88,10 @@
                                             class="img-fluid object-fit-contain border rounded-circle">
                                         <div class="d-flex justify-content-center flex-column">
                                             <h3 class="m-2 my-0 fs-5"> {{ contacts[active].name }} </h3>
-                                            <p id="waiting" class="my-0 mx-2 fs_14">Ultimo accesso oggi alle {{ contacts[active] && contacts[active].messages.length > 0 ? dateWithoutSec(contacts[active].messages[contacts[active].messages.length - 1].date) : '' }}</p>
+                                            <p id="waiting" class="my-0 mx-2 fs_14">Ultimo accesso oggi alle {{
+                                                contacts[active] && contacts[active].messages.length > 0 ?
+                                                dateWithoutSec(contacts[active].messages[contacts[active].messages.length
+                                                - 1].date) : '' }}</p>
                                         </div>
                                     </div>
                                     <div class="icons-profile p-3 d-flex">
@@ -104,7 +109,31 @@
                                         <div class="my-2 p-1 border"
                                             :class=" message.status == 'sent' ? 'message-sent float-end' : 'message-received float-start' ">
                                             <p class="m-1"> {{ message.message }}</p>
-                                            <p class="m-0 fs_10 text-end text-secondary"> {{ dateWithoutSec(message.date) }} </p>
+                                            <p class="m-0 fs_10 text-end text-secondary"> {{
+                                                dateWithoutSec(message.date) }} </p>
+
+                                            <!-- 
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div> -->
+
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa-solid fa-angle-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="">Message info</a></li>
+                                                    <li><a class="dropdown-item" href="">Delete Message</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -122,7 +151,8 @@
                                         <input v-model="user_msg" type="text" class="form-control rounded"
                                             placeholder="Scrivi un messaggio" @keyup.enter="send()">
                                         <div class="input-group-append">
-                                            <span v-if="!user_msg == ''" class="input-group-text mx-3 border-0 text-secondary">
+                                            <span v-if="!user_msg == ''"
+                                                class="input-group-text mx-3 border-0 text-secondary">
                                                 <i class="fa-solid fa-paper-plane"></i>
                                             </span>
                                             <span v-else class="input-group-text mx-3 border-0 text-secondary">
@@ -140,6 +170,9 @@
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
 </body>
