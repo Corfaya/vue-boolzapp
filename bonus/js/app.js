@@ -1,4 +1,5 @@
 const { createApp } = Vue;
+const { DateTime } = luxon
 
 createApp({
   data() {
@@ -205,6 +206,10 @@ createApp({
     };
   },
   methods: {
+    hours() {
+      const hoursMinutesToday =  DateTime.now().toFormat("HH:mm")
+      return hoursMinutesToday
+    },
     randomAnswers() {
       const random = Math.floor(Math.random() * this.answers.length)
       return this.answers[random]

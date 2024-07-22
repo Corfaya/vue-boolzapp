@@ -66,7 +66,7 @@
                                         <h3 class="mx-2 my-0 fs_16">
                                             {{ contact.name }}
                                         </h3>
-                                        <p class="my-0 mx-2 fs_14">Ultimo messaggio inviato</p>
+                                        <p class="my-0 mx-2 fs_14">Ultimo messaggio inviato alle {{ hours() }}</p>
                                     </div>
                                 </div>
 
@@ -87,7 +87,7 @@
                                             class="img-fluid object-fit-contain border rounded-circle">
                                         <div class="d-flex justify-content-center flex-column">
                                             <h3 class="m-2 my-0 fs-5"> {{ contacts[active].name }} </h3>
-                                            <p class="my-0 mx-2 fs_14">Ultimo accesso oggi alle</p>
+                                            <p class="my-0 mx-2 fs_14">Ultimo accesso oggi alle {{ hours() }}</p>
                                         </div>
                                     </div>
                                     <div class="icons-profile p-3 d-flex">
@@ -105,7 +105,7 @@
                                         <div class="my-2 p-1 border"
                                             :class=" message.status == 'sent' ? 'message-sent float-end' : 'message-received float-start' ">
                                             <p class="m-1"> {{ message.message }}</p>
-                                            <p class="m-0 fs_10 text-end text-secondary"></p>
+                                            <p class="m-0 fs_10 text-end text-secondary"> {{ hours() }}</p>
                                         </div>
                                     </div>
 
@@ -133,8 +133,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
