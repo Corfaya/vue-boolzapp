@@ -106,33 +106,21 @@
                                 <div id="main-chat" class="overflow d-flex flex-column">
 
                                     <div v-for="message, index in contacts[active].messages">
-                                        <div class="my-2 p-1 border"
+                                        <div class="my-2 p-1 border d-flex align-items-center justify-content-between"
                                             :class=" message.status == 'sent' ? 'message-sent float-end' : 'message-received float-start' ">
                                             <p class="m-1"> {{ message.message }}</p>
-                                            <p class="m-0 fs_10 text-end text-secondary"> {{
-                                                dateWithoutSec(message.date) }} </p>
-
-                                            <!-- 
-    <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div> -->
-
-
-                                            <div class="dropdown">
-                                                <button class="btn btn-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="fa-solid fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="">Message info</a></li>
-                                                    <li><a class="dropdown-item" href="">Delete Message</a></li>
-                                                </ul>
+                                            <div>
+                                                <div class="dropdown">
+                                                    <button class="border-0 btn btn-sm p-0 ms-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="fa-solid fa-angle-down"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="">Message info</a></li>
+                                                        <li><a class="dropdown-item" href="" @click="deleteMessage()">Delete Message</a></li>
+                                                    </ul>
+                                                </div>
+                                                <p class="m-0 fs_10 text-end text-secondary"> {{
+                                                    dateWithoutSec(message.date) }} </p>
                                             </div>
                                         </div>
                                     </div>
