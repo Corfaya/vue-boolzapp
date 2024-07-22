@@ -108,15 +108,16 @@
                                     <div v-for="message, index in contacts[active].messages">
                                         <div class="my-2 p-1 border d-flex align-items-center justify-content-between"
                                             :class=" message.status == 'sent' ? 'message-sent float-end' : 'message-received float-start' ">
-                                            <p class="m-1"> {{ message.message }}</p>
+                                            <em class="text-secondary m-1" v-if="message.message == 'Questo messaggio è stato eliminato.'"> <i class="fa-solid fa-ban m-1"></i> {{ message.message }}</em>
+                                            <p v-else class="m-1"> {{ message.message }}</p>
                                             <div>
                                                 <div class="dropdown">
                                                     <button class="border-0 btn btn-sm p-0 ms-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                         <i class="fa-solid fa-angle-down"></i>
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="">Message info</a></li>
-                                                        <li><a class="dropdown-item" href="" @click="deleteMessage()">Delete Message</a></li>
+                                                        <li><a class="dropdown-item" href="#">Message info</a></li>
+                                                        <li><a class="dropdown-item" href="#" @click="deleteMessage(index)">Delete Message</a></li>
                                                     </ul>
                                                 </div>
                                                 <p class="m-0 fs_10 text-end text-secondary"> {{

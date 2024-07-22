@@ -273,6 +273,12 @@ createApp({
       const activeContact = this.contacts.splice(i, 1)[0]
       this.contacts.unshift(activeContact)
       this.active = 0
+    },
+    // Delete message function
+    deleteMessage(i) {
+      if(confirm("Sicuro di voler cancellare il messaggio?")) {
+        this.contacts[this.active].messages[i].message = "Questo messaggio è stato eliminato."
+      }
     }
   },
 }).mount("#app");
