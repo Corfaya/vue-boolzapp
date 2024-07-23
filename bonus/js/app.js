@@ -331,6 +331,11 @@ createApp({
     // Scrollbar function
     scrollToBottom() {
         this.$refs.bottomEl?.scrollIntoView({ behavior: 'smooth' })
-    }    
+    },
+    emojiSelection(em) {
+      this.user_msg += em
+      let input = document.getElementById("inputMessage")
+      input.focus()
+    } 
   },
 }).mount("#app");

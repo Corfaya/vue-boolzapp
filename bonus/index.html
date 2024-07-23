@@ -143,12 +143,12 @@
                                                 </button>
                                                 <ul class="dropdown-menu emoticon-dropup">
                                                     <ul class="d-flex flex-wrap list-unstyled ps-2">
-                                                        <li v-for="emoticon, index in emoticonArray" class="p-1"> {{ emoticon }} </li>
+                                                        <li v-for="emoticon, index in emoticonArray" class="p-1" @click="emojiSelection(emoticon)"> {{ emoticon }} </li>
                                                     </ul>
                                                 </ul>
                                             </div>
                                         </div>
-                                        <input v-model="user_msg" type="text" class="form-control rounded"
+                                        <input id="inputMessage" v-model="user_msg" type="text" class="form-control rounded"
                                             placeholder="Scrivi un messaggio" @keyup.enter="send()">
                                         <div class="input-group-append">
                                             <button v-if="!user_msg == ''"
