@@ -249,18 +249,22 @@ createApp({
         // status
         this.addresseeStatus("Online")
         // scroll
-        this.topToBottomScroll()
+        this.scrollToBottom()
         // push into timeout array
         this.timeoutArray.push(setTimeout(() => {
+          this.scrollToBottom()
+        }, 100))
+        this.timeoutArray.push(setTimeout(() => {
           this.addresseeStatus("Sta scrivendo...")
-        }, 2000))
-        
+        }, 2000))        
         this.timeoutArray.push(setTimeout(() => {
           this.addresseeStatus("Online")
-          this.contacts[this.active].messages.push(pc_message)
+          this.contacts[this.active].messages.push(pc_message)          
         }, 3000))
-        
         this.timeoutArray.push(setTimeout(() => {
+          this.scrollToBottom()          
+        }, 3100))        
+        this.timeoutArray.push(setTimeout(() => {          
           this.addresseeStatus("Ultimo accesso oggi alle " + today);
         }, 4000))
       }
@@ -293,9 +297,8 @@ createApp({
       document.getElementById("waiting").innerHTML = status;
     },
     // Scrollbar function
-    topToBottomScroll() {
-      const scroll = this.$refs.mainChat
-      scroll.scrollTop = scroll.scrollHeight
-    }
+    scrollToBottom() {
+        this.$refs.bottomEl?.scrollIntoView({ behavior: 'smooth' });
+    }    
   },
 }).mount("#app");

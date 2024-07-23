@@ -104,7 +104,8 @@
                                     </div>
                                 </div>
                                 <!-- MAIN CHAT -->
-                                <div id="main-chat" ref="main-chat" class="overflow d-flex flex-column">
+                                 
+                                <div id="main-chat" class="overflow d-flex flex-column">
 
                                     <div v-for="message, index in contacts[active].messages">
                                         <div class="my-2 p-1 border d-flex align-items-center justify-content-between"
@@ -125,7 +126,9 @@
                                                     dateWithoutSec(message.date) }} </p>
                                             </div>
                                         </div>
+
                                     </div>
+                                    <div ref="bottomEl"></div>
 
                                 </div>
                             </div>
