@@ -318,8 +318,6 @@ createApp({
         "👾",
         "🤡",
       ],
-      favoritesArray: [], // empty array for marked messages
-      timeoutArray: [], // empty array for timeouts of send() function
       avatars: [
         "./img/avatar_1.jpg",
         "./img/avatar_2.jpg",
@@ -329,34 +327,36 @@ createApp({
         "./img/avatar_6.jpg",
         "./img/avatar_7.jpg",
         "./img/avatar_8.jpg"
-      ]
+      ],
+      favoritesArray: [], // empty array for marked messages
+      timeoutArray: [], // empty array for timeouts of send() function
     };
   },
   methods: {
+    // (1) Select second element of the array resulting from the split
     dateWithoutSec(dateToFormat) {
-      // select second element of the array resulting from the split
       return dateToFormat.split(" ")[1].slice(0, 5);
     },
+    // (2) Return date formatted with hours and minutes
     hours() {
       return DateTime.now().toFormat("HH:mm");
     },
+    // (3) Pick a random number for index of answers array and return an object with random type (if text, print text; else if gif, print path)
     randomAnswers() {
       const random = Math.floor(Math.random() * this.answers.length)
       let pcAnswer = this.answers[random]
-      console.log(pcAnswer)
-
-      // return object with random type + if text, print text; if gif, print path
       return {
         type: pcAnswer.type,
         message: pcAnswer.type === "text" ? pcAnswer.theme : pcAnswer.src,
         status: "received",
       }
     },
+    // (4) Clear all timeouts and use active variable for chat opened
     openChat(i) {
-      //clear all timeouts
       this.stopTimeOut();
       this.active = i;
     },
+    // (5) Function for sent and received messages
     send() {
       const todayDate = DateTime.now().toFormat("dd/mm/yyyy HH:mm");
       let today = this.hours();
@@ -366,39 +366,38 @@ createApp({
         date: todayDate,
         type: "text",
       };
-      // random object
       let pc_message = this.randomAnswers();
+
       if (!this.user_msg == "") {
         this.contacts[this.active].messages.push(user_message);
-        // active contact shifted on top
+        
         this.activeContactTop(this.active);
-        // status
+        
         this.addresseeStatus("Online");
-        // scroll
+        
         this.scrollToBottom();
-        // push into timeout array
+        
         this.timeoutArray.push(
           setTimeout(() => {
             this.scrollToBottom();
           }, 100)
-        );
+        )
         this.timeoutArray.push(
           setTimeout(() => {
             this.addresseeStatus("Sta scrivendo...");
           }, 2000)
-        );
+        )
         this.timeoutArray.push(
           setTimeout(() => {
             this.addresseeStatus("Online");
-            //object pushed
+            // push object
             this.contacts[this.active].messages.push({
               message: pc_message.message,
               date: todayDate,
-              // random type
               type: pc_message.type,
             });
           }, 3000)
-        );
+        )
         this.timeoutArray.push(
           setTimeout(() => {
             this.scrollToBottom();
@@ -408,58 +407,61 @@ createApp({
           setTimeout(() => {
             this.addresseeStatus("Ultimo accesso oggi alle " + today);
           }, 4000)
-        );
+        )
       }
+
       this.user_msg = "";
     },
+    // (6) Function to look for names by entering letters for filtering
     search(contact) {
       // code below is TRUE ? return it and show filtered li : hide filtered li
       return contact.name.toLowerCase().includes(this.filter.toLowerCase());
-      // filter = "" => in absence of filters, all contacts'll be shown, because condition is always true
     },
-    // clearTimeOut
+    // (7) clearTimeOut method to stop timeouts
     stopTimeOut() {
       this.timeoutArray.forEach((timeout) => clearTimeout(timeout));
       this.timeoutArray = [];
     },
-    // when user writes in a specific chat, remove that active contact from list and put it on 0 position with unshift array method
+    // (8) When user writes in a specific chat, remove that active contact from list and put it on 0 position with unshift array method
     activeContactTop(i) {
       const activeContact = this.contacts.splice(i, 1)[0];
       this.contacts.unshift(activeContact);
       this.active = 0;
     },
-    // Delete message function
+    // (9) Delete message with confirm
     deleteMessage(i) {
       if (confirm("Sicuro di voler cancellare il messaggio?")) {
         this.contacts[this.active].messages[i].message =
           "Questo messaggio è stato eliminato.";
       }
     },
-    // Optimization function: addressee status tracking
+    // (10) Optimization function: status tracking
     addresseeStatus(status) {
       document.getElementById("waiting").innerHTML = status;
     },
-    // Scrollbar function
+    // (11) Scroll down function, called up before sending and receiving
     scrollToBottom() {
       this.$refs.bottomEl?.scrollIntoView({ behavior: "smooth" });
     },
+    // (12) Adding emoji function, with focus on input
     emojiSelection(em) {
       this.user_msg += em;
       let input = document.getElementById("inputMessage");
       input.focus();
     },
-    // favorite message
+    // (13) Function to add a message to the list of favourite messages
     addToFav(msgg) {
       if (!this.favoritesArray.includes(msgg)) {
         this.favoritesArray.push(msgg);
         console.log(this.favoritesArray)
       }
     },
+    // (14) Generate a random number for index of avatars array, so the new contact can have a random avatar
     randomAvatar() {
       const random = Math.floor(Math.random() * this.avatars.length)
       return this.avatars[random]
     },
-    // add new contact
+    // (15) Function to add new contact through pushing an object into contacts array
     newContact() {
       const newName = prompt("Nome contatto:")
       const totalName = (newName.slice(0,1).toUpperCase()) + newName.slice(1, newName.length)

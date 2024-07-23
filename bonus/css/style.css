@@ -39,6 +39,7 @@ body {
 
 .col-4 {
     border-right: 1px solid #dfdddd;
+    position: relative;
 }
 
 /* List */
@@ -60,6 +61,10 @@ li:hover {
 }
 
 /* Chat */
+.contacts {
+    overflow-y: scroll;
+}
+
 #main-chat {
     padding: 10px;
     height: calc(100vh - 150px);

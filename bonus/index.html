@@ -39,11 +39,9 @@
                                     <li class="dropdown-item" @click="newContact()"><a href="#"
                                             class="text-secondary text-decoration-none"><i class="fa-solid fa-plus text-success"></i>
                                             <span class="ms-2">Nuovo contatto</span></a></li>
-                                    <!-- CREARE FUNZIONE NUOVO CONTATTO -->
                                     <li class="dropdown-item">
                                             <a href="#" class="text-secondary text-decoration-none">Informazioni sull'ultima versione</a>
                                     </li>
-                                    <!-- INSERIRE FUNZIONE STELLA -->
                                 </ul>
                             </div>
                             <div class="dropdown d-sm-block d-md-none">
@@ -84,7 +82,7 @@
                     </div>
 
                     <!-- LIST SECTION -->
-                    <ul class="list-unstyled bg-white m-0 overflow contacts">
+                    <ul class="list-unstyled bg-white m-0 contacts">
                         <!-- DEFAULT: v-show="search(contact)" === true for each contact -->
                         <li v-for="(contact, index) in contacts" @click="openChat(index)" v-show="search(contact)">
                             <div class="profile d-flex justify-content-between align-items-center py-3 px-3 bord">
