@@ -471,16 +471,15 @@ createApp({
         messages: [
           {
             date: "23/07/2024 22:01:33",
-              message: "",
-              type: "",
+              message: "Ehy there, I am using Boolzapp!",
+              type: "text",
               status: "received",
           }
         ]
       }
+      console.log(newContact)
       if (!this.contacts.includes(newContact)) {
       this.contacts.push(newContact);
-      } else {
-        console.log("Esiste già un contatto con questo nome.")
       }
     }
   },
