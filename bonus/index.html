@@ -46,7 +46,7 @@
 
                     <!-- SEARCH INPUT -->
                     <div class="input-group">
-                        <button class="btn btn-sm btn-outline-secondary px-4 bg-white border border-light" type="button"
+                        <button class="btn btn-sm btn-outline-secondary px-4 bg-white border border-light search" type="button"
                             id="button-addon1"><i class="fa-solid fa-search"></i></button>
                         <input v-model="filter" type="text" class="form-control border border-light"
                             placeholder="Cerca o inizia una nuova chat">
@@ -118,8 +118,8 @@
                                                         <i class="fa-solid fa-angle-down"></i>
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="#">Message info</a></li>
-                                                        <li><a class="dropdown-item" href="#" @click="deleteMessage(index)">Delete Message</a></li>
+                                                        <li><a class="dropdown-item" href="">Message info</a></li>
+                                                        <li><a class="dropdown-item" href="" @click="deleteMessage(index)">Delete Message</a></li>
                                                     </ul>
                                                 </div>
                                                 <p class="m-0 fs_10 text-end text-secondary"> {{
@@ -137,20 +137,27 @@
                                 <div id="input-section" class="bg-grey">
                                     <div class="input-group my-2 d-flex align-items-center">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text mx-3 border-0 text-secondary">
-                                                <i class="fa-regular fa-face-smile"></i>
-                                            </span>
+                                            <div class="btn-group dropup">
+                                                <button class="input-group-text mx-3 border-0 text-secondary" type="button" data-bs-toggle="dropdown">
+                                                    <i class="fa-regular fa-face-smile"></i>
+                                                </button>
+                                                <ul class="dropdown-menu emoticon-dropup">
+                                                    <ul class="d-flex flex-wrap list-unstyled ps-2">
+                                                        <li v-for="emoticon, index in emoticonArray" class="p-1"> {{ emoticon }} </li>
+                                                    </ul>
+                                                </ul>
+                                            </div>
                                         </div>
                                         <input v-model="user_msg" type="text" class="form-control rounded"
                                             placeholder="Scrivi un messaggio" @keyup.enter="send()">
                                         <div class="input-group-append">
-                                            <span v-if="!user_msg == ''"
+                                            <button v-if="!user_msg == ''"
                                                 class="input-group-text mx-3 border-0 text-secondary">
                                                 <i class="fa-solid fa-paper-plane"></i>
-                                            </span>
-                                            <span v-else class="input-group-text mx-3 border-0 text-secondary">
+                                            </button>
+                                            <button v-else class="input-group-text mx-3 border-0 text-secondary">
                                                 <i class="fa-solid fa-microphone"></i>
-                                            </span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

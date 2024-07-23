@@ -209,7 +209,39 @@ createApp({
         }        
       ],
       // empty array for timeouts of send() function
-      timeoutArray: []
+      timeoutArray: [],
+      emoticonArray: [
+        "😀",
+        "😁",
+        "😂",
+        "😃",
+        "😄",
+        "😅",
+        "🤢",
+        "😆",
+        "😇",
+        "😈",
+        "😉",
+        "😊",
+        "😍",
+        "😎",
+        "😐",
+        "😓",
+        "😡",
+        "😤",
+        "😭",
+        "😱",
+        "😵",
+        "🥰",
+        "🤯",
+        "🙈",
+        "🙉",
+        "🙊",
+        "💀",
+        "🙏",        
+        "👾",
+        "🤡"
+      ]
     };
   },
   methods: {
@@ -298,7 +330,7 @@ createApp({
     },
     // Scrollbar function
     scrollToBottom() {
-        this.$refs.bottomEl?.scrollIntoView({ behavior: 'smooth' });
+        this.$refs.bottomEl?.scrollIntoView({ behavior: 'smooth' })
     }    
   },
 }).mount("#app");
