@@ -1,5 +1,5 @@
 const { createApp } = Vue;
-const { DateTime } = luxon
+const { DateTime } = luxon;
 
 createApp({
   data() {
@@ -8,74 +8,74 @@ createApp({
       user_msg: "",
       filter: "", // when user writes in input, search method check if name's contact includes the text wrote
       answers: [
-         {
-           type: "text",
-           theme: "Come vuoi"
-         },
-         {
-           type: "text",
-           theme: "Non so di cosa stai parlando"
-         },
-         {
-           type: "text",
-           theme: "Ahahahahahhahah 😂"
-         },
-        {
-           type: "text",
-           theme: "Scusa ma chi sei?"
-         },
-         {
-           type: "text",
-           theme: "Ti scrivo dopo, ora non posso"
-         },
-         {
-           type: "text",
-           theme: "Sto cercando di fixare il codice, ci sentiamo dopo"
-         },
-         {
-           type: "text",
-           theme: "Mmh mi sa che hai sbagliato numero"
-         },
         {
           type: "text",
-          theme: "È tutta colpa delle scie chimiche"
+          theme: "Come vuoi",
         },
         {
           type: "text",
-          src: "Ma in che senso?"
+          theme: "Non so di cosa stai parlando",
+        },
+        {
+          type: "text",
+          theme: "Ahahahahahhahah 😂",
+        },
+        {
+          type: "text",
+          theme: "Scusa ma chi sei?",
+        },
+        {
+          type: "text",
+          theme: "Ti scrivo dopo, ora non posso",
+        },
+        {
+          type: "text",
+          theme: "Sto cercando di fixare il codice, ci sentiamo dopo",
+        },
+        {
+          type: "text",
+          theme: "Mmh mi sa che hai sbagliato numero",
+        },
+        {
+          type: "text",
+          theme: "È tutta colpa delle scie chimiche",
+        },
+        {
+          type: "text",
+          src: "Ma in che senso?",
         },
         {
           type: "gif",
-          src: "https://i.pinimg.com/originals/0c/64/9a/0c649a17ec1e5f5ca340248b4ef4e4be.gif"
+          src: "https://i.pinimg.com/originals/0c/64/9a/0c649a17ec1e5f5ca340248b4ef4e4be.gif",
         },
         {
           type: "gif",
-          src: "https://i.pinimg.com/originals/9d/97/d3/9d97d38e98836d33d1802cbc777ef7e0.gif"
+          src: "https://i.pinimg.com/originals/9d/97/d3/9d97d38e98836d33d1802cbc777ef7e0.gif",
         },
         {
           type: "gif",
-          src: "https://i.pinimg.com/originals/c8/90/da/c890dac2f61612e0624ad8202ace26de.gif"
+          src: "https://i.pinimg.com/originals/c8/90/da/c890dac2f61612e0624ad8202ace26de.gif",
         },
         {
           type: "gif",
-          src: "https://i.pinimg.com/originals/5e/ab/cd/5eabcd5b8a9f6edd8cfdad3f0e36dacd.gif"
+          src: "https://i.pinimg.com/originals/5e/ab/cd/5eabcd5b8a9f6edd8cfdad3f0e36dacd.gif",
         },
         {
           type: "gif",
-          src: "https://i.pinimg.com/originals/04/6c/94/046c9402848d9234130ac214d903ad08.gif"
+          src: "https://i.pinimg.com/originals/04/6c/94/046c9402848d9234130ac214d903ad08.gif",
         },
         {
           type: "gif",
-          src: "https://i.pinimg.com/originals/62/ce/83/62ce83ea6a15804f8be45cbc6dd4f48c.gif"
+          src: "https://i.pinimg.com/originals/62/ce/83/62ce83ea6a15804f8be45cbc6dd4f48c.gif",
         },
         {
           type: "gif",
-          src: "https://i.pinimg.com/originals/0f/09/cc/0f09cc5c3aef9fe5b883b761a6683210.gif"
+          src: "https://i.pinimg.com/originals/0f/09/cc/0f09cc5c3aef9fe5b883b761a6683210.gif",
         },
         {
           type: "gif",
-          src: "https://i.pinimg.com/originals/6d/17/4a/6d174a29847aae4d8ce031b18271ad67.gif"
-        }
+          src: "https://i.pinimg.com/originals/6d/17/4a/6d174a29847aae4d8ce031b18271ad67.gif",
+        },
       ],
       contacts: [
         {
@@ -284,7 +284,7 @@ createApp({
               status: "received",
             },
           ],
-        }        
+        },
       ],
       emoticonArray: [
         "😀",
@@ -314,9 +314,9 @@ createApp({
         "🙉",
         "🙊",
         "💀",
-        "🙏",        
+        "🙏",
         "👾",
-        "🤡"
+        "🤡",
       ],
       favoritesArray: [], // empty array for marked messages
       timeoutArray: [], // empty array for timeouts of send() function
@@ -328,88 +328,100 @@ createApp({
       return dateToFormat.split(" ")[1].slice(0, 5);
     },
     hours() {
-      return DateTime.now().toFormat("HH:mm")
+      return DateTime.now().toFormat("HH:mm");
     },
     randomAnswers() {
       const random = Math.floor(Math.random() * this.answers.length)
       let pcAnswer = this.answers[random]
+
       // return object with random type + if text, print text; if gif, print path
       return {
         type: pcAnswer.type,
-        message: pcAnswer.type === "text" ? pcAnswer.theme : pcAnswer.src
+        message: pcAnswer.type === "text" ? pcAnswer.theme : pcAnswer.src,
+        status: "received",
       }
     },
     openChat(i) {
       //clear all timeouts
-      this.stopTimeOut()
+      this.stopTimeOut();
       this.active = i;
     },
     send() {
-      const todayDate = DateTime.now().toFormat("dd/mm/yyyy HH:mm")
-      let today = this.hours()
+      const todayDate = DateTime.now().toFormat("dd/mm/yyyy HH:mm");
+      let today = this.hours();
       let user_message = {
         message: this.user_msg,
         status: "sent",
         date: todayDate,
-        type: "text"
-      }
+        type: "text",
+      };
       // random object
-      let pc_message = this.randomAnswers()
+      let pc_message = this.randomAnswers();
       if (!this.user_msg == "") {
-        this.contacts[this.active].messages.push(user_message)
+        this.contacts[this.active].messages.push(user_message);
         // active contact shifted on top
-        this.activeContactTop(this.active)
+        this.activeContactTop(this.active);
         // status
-        this.addresseeStatus("Online")
+        this.addresseeStatus("Online");
         // scroll
-        this.scrollToBottom()
+        this.scrollToBottom();
         // push into timeout array
-        this.timeoutArray.push(setTimeout(() => {
-          this.scrollToBottom()
-        }, 100))
-        this.timeoutArray.push(setTimeout(() => {
-          this.addresseeStatus("Sta scrivendo...")
-        }, 2000))        
-        this.timeoutArray.push(setTimeout(() => {
-          this.addresseeStatus("Online")
-          //object pushed
-          this.contacts[this.active].messages.push({
-            message: pc_message.message,
-            status: "received",
-            date: todayDate,
-            // random type
-            type: pc_message.type
-          })       
-        }, 3000))
-        this.timeoutArray.push(setTimeout(() => {
-          this.scrollToBottom()          
-        }, 3100))        
-        this.timeoutArray.push(setTimeout(() => {          
-          this.addresseeStatus("Ultimo accesso oggi alle " + today);
-        }, 4000))
+        this.timeoutArray.push(
+          setTimeout(() => {
+            this.scrollToBottom();
+          }, 100)
+        );
+        this.timeoutArray.push(
+          setTimeout(() => {
+            this.addresseeStatus("Sta scrivendo...");
+          }, 2000)
+        );
+        this.timeoutArray.push(
+          setTimeout(() => {
+            this.addresseeStatus("Online");
+            //object pushed
+            this.contacts[this.active].messages.push({
+              message: pc_message.message,
+              date: todayDate,
+              // random type
+              type: pc_message.type,
+            });
+          }, 3000)
+        );
+        this.timeoutArray.push(
+          setTimeout(() => {
+            this.scrollToBottom();
+          }, 3100)
+        );
+        this.timeoutArray.push(
+          setTimeout(() => {
+            this.addresseeStatus("Ultimo accesso oggi alle " + today);
+          }, 4000)
+        );
       }
       this.user_msg = "";
     },
     search(contact) {
       // code below is TRUE ? return it and show filtered li : hide filtered li
-      return contact.name.toLowerCase().includes(this.filter.toLowerCase())
+      return contact.name.toLowerCase().includes(this.filter.toLowerCase());
       // filter = "" => in absence of filters, all contacts'll be shown, because condition is always true
     },
     // clearTimeOut
     stopTimeOut() {
-      this.timeoutArray.forEach(timeout => clearTimeout(timeout))
-      this.timeoutArray = []
+      this.timeoutArray.forEach((timeout) => clearTimeout(timeout));
+      this.timeoutArray = [];
     },
     // when user writes in a specific chat, remove that active contact from list and put it on 0 position with unshift array method
     activeContactTop(i) {
-      const activeContact = this.contacts.splice(i, 1)[0]
-      this.contacts.unshift(activeContact)
-      this.active = 0
+      const activeContact = this.contacts.splice(i, 1)[0];
+      this.contacts.unshift(activeContact);
+      this.active = 0;
     },
     // Delete message function
     deleteMessage(i) {
-      if(confirm("Sicuro di voler cancellare il messaggio?")) {
-        this.contacts[this.active].messages[i].message = "Questo messaggio è stato eliminato."
+      if (confirm("Sicuro di voler cancellare il messaggio?")) {
+        this.contacts[this.active].messages[i].message =
+          "Questo messaggio è stato eliminato.";
       }
     },
     // Optimization function: addressee status tracking
@@ -418,18 +430,18 @@ createApp({
     },
     // Scrollbar function
     scrollToBottom() {
-        this.$refs.bottomEl?.scrollIntoView({ behavior: 'smooth' })
+      this.$refs.bottomEl?.scrollIntoView({ behavior: "smooth" });
     },
     emojiSelection(em) {
-      this.user_msg += em
-      let input = document.getElementById("inputMessage")
-      input.focus()
+      this.user_msg += em;
+      let input = document.getElementById("inputMessage");
+      input.focus();
     },
     // favorite message
-    addToFav(msgg){
-      if(!this.favoritesArray.includes(msgg)){
-      this.favoritesArray.push(msgg)
+    addToFav(msgg) {
+      if (!this.favoritesArray.includes(msgg)) {
+        this.favoritesArray.push(msgg);
       }
-    }
+    },
   },
 }).mount("#app");
