@@ -16,9 +16,13 @@ createApp({
         "Guarda, preferirei chiamarti se posso",
         "Scusa ma chi sei?",
         "Ti avevo chiesto di non scrivermi più",
-        "Ho il covid",
+        "Si stava meglio quando si stava peggio",
         "Sto cercando di fixare questo codice, ci sentiamo dopo",
-        "Ma in che senso?"
+        "Ma in che senso?",
+        "L'erba del vicino è sempre più buona",
+        "È tutta colpa delle scie chimiche",
+        "Non cie lo dikono!1!!.1!",
+        "Ancora tu? Devo fare pulizia kontatti"
       ],
       contacts: [
         {
@@ -242,20 +246,20 @@ createApp({
         this.contacts[this.active].messages.push(user_message)
         // active contact shifted on top
         this.activeContactTop(this.active)
-        let waiting = document.getElementById("waiting")
-        waiting.innerHTML = "Online"
+        // status
+        this.addresseeStatus("Online")
         // push into timeout array
         this.timeoutArray.push(setTimeout(() => {
-          waiting.innerHTML = "Sta scrivendo"
+          this.addresseeStatus("Sta scrivendo...")
         }, 2000))
         
         this.timeoutArray.push(setTimeout(() => {
-          waiting.innerHTML = "Online"
+          this.addresseeStatus("Online")
           this.contacts[this.active].messages.push(pc_message)
         }, 3000))
         
         this.timeoutArray.push(setTimeout(() => {
-          waiting.innerHTML = "Ultimo accesso oggi alle " + today
+          this.addresseeStatus("Ultimo accesso oggi alle " + today);
         }, 4000))
       }
       this.user_msg = "";
@@ -281,6 +285,10 @@ createApp({
       if(confirm("Sicuro di voler cancellare il messaggio?")) {
         this.contacts[this.active].messages[i].message = "Questo messaggio è stato eliminato."
       }
-    }
+    },
+    // Optimization function: addressee status tracking
+    addresseeStatus(status) {
+      document.getElementById("waiting").innerHTML = status;
+    },
   },
 }).mount("#app");
