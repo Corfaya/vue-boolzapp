@@ -42,7 +42,7 @@ createApp({
         },
         {
           type: "text",
-          src: "Ma in che senso?",
+          theme: "Ma in che senso?",
         },
         {
           type: "gif",
@@ -320,6 +320,16 @@ createApp({
       ],
       favoritesArray: [], // empty array for marked messages
       timeoutArray: [], // empty array for timeouts of send() function
+      avatars: [
+        "./img/avatar_1.jpg",
+        "./img/avatar_2.jpg",
+        "./img/avatar_3.jpg",
+        "./img/avatar_4.jpg",
+        "./img/avatar_5.jpg",
+        "./img/avatar_6.jpg",
+        "./img/avatar_7.jpg",
+        "./img/avatar_8.jpg"
+      ]
     };
   },
   methods: {
@@ -333,6 +343,7 @@ createApp({
     randomAnswers() {
       const random = Math.floor(Math.random() * this.answers.length)
       let pcAnswer = this.answers[random]
+      console.log(pcAnswer)
 
       // return object with random type + if text, print text; if gif, print path
       return {
@@ -441,7 +452,36 @@ createApp({
     addToFav(msgg) {
       if (!this.favoritesArray.includes(msgg)) {
         this.favoritesArray.push(msgg);
+        console.log(this.favoritesArray)
       }
     },
+    randomAvatar() {
+      const random = Math.floor(Math.random() * this.avatars.length)
+      return this.avatars[random]
+    },
+    // add new contact
+    newContact() {
+      const newName = prompt("Nome contatto:")
+      const totalName = (newName.slice(0,1).toUpperCase()) + newName.slice(1, newName.length)
+      const newAvatar = this.randomAvatar()
+      let newContact = {
+        name: totalName,
+        avatar: newAvatar,
+        visible: true,
+        messages: [
+          {
+            date: "23/07/2024 22:01:33",
+              message: "",
+              type: "",
+              status: "received",
+          }
+        ]
+      }
+      if (!this.contacts.includes(newContact)) {
+      this.contacts.push(newContact);
+      } else {
+        console.log("Esiste già un contatto con questo nome.")
+      }
+    }
   },
 }).mount("#app");

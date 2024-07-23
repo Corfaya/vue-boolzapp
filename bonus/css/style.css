@@ -62,7 +62,6 @@ li:hover {
 /* Chat */
 #main-chat {
     padding: 10px;
-    /* PROVa */
     height: calc(100vh - 150px);
 }
 
