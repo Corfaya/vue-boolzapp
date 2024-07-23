@@ -286,8 +286,6 @@ createApp({
           ],
         }        
       ],
-      // empty array for timeouts of send() function
-      timeoutArray: [],
       emoticonArray: [
         "😀",
         "😁",
@@ -320,7 +318,8 @@ createApp({
         "👾",
         "🤡"
       ],
-      favoritesArray: [], //INIZIALIZZO ARRAY VUOTO
+      favoritesArray: [], // empty array for marked messages
+      timeoutArray: [], // empty array for timeouts of send() function
     };
   },
   methods: {

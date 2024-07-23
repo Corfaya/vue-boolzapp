@@ -66,9 +66,26 @@
                                         <h3 class="mx-2 my-0 fs_16">
                                             {{ contact.name }}
                                         </h3>
-                                        <!-- if messages array is not empty (there's one message at least) then print that message -->
-                                        <p class="d-none d-md-block my-0 mx-2 fs_14"> {{ contact.messages.length > 0 ?
-                                            contact.messages[contact.messages.length - 1].message : '' }} </p>
+                                        
+                                        <p class="d-none d-md-block my-0 mx-2 fs_14">  
+                                            <!-- if messages array is not empty (there's one message at least)... -->                                         
+                                            <div v-if="contact.messages.length > 0">
+                                                <!-- If message's a gif... -->
+                                                <div v-if="contact.messages[contact.messages.length - 1].type == 'gif'">
+                                                     <!-- ...then print "GIF" -->
+                                                    <i class="fa-regular fa-image"></i> GIF
+                                                </div>
+                                                <!-- If message's a text... -->
+                                                <div v-else>
+                                                    <!-- ...then print that text message -->
+                                                    {{ contact.messages[contact.messages.length - 1].message }} 
+                                                </div>
+                                               
+                                            </div>
+                                             
+
+                                            
+                                        </p>
                                     </div>
                                 </div>
                                  <!-- if messages array is not empty (there's one message at least), then take the date of last message and format it without seconds -->
