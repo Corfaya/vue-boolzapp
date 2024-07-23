@@ -110,8 +110,11 @@
                                     <div v-for="message, index in contacts[active].messages">
                                         <div class="my-2 p-1 border d-flex align-items-center justify-content-between"
                                             :class=" message.status == 'sent' ? 'message-sent float-end' : 'message-received float-start' ">
+                                            <!-- Deleted message -->
                                             <em class="text-secondary m-1" v-if="message.message == 'Questo messaggio è stato eliminato.'"> <i class="fa-solid fa-ban m-1"></i> {{ message.message }}</em>
-                                            <p v-else class="m-1"> {{ message.message }}</p>
+                                            <!-- text or images -->
+                                            <p v-else-if="message.type == 'text'" class="m-1"> {{ message.message }}</p>
+                                            <img v-else :src="message.message" alt="gif">
                                             <div>
                                                 <div class="dropdown">
                                                     <button class="border-0 btn btn-sm p-0 ms-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
