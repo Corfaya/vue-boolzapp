@@ -248,6 +248,8 @@ createApp({
         this.activeContactTop(this.active)
         // status
         this.addresseeStatus("Online")
+        // scroll
+        this.topToBottomScroll()
         // push into timeout array
         this.timeoutArray.push(setTimeout(() => {
           this.addresseeStatus("Sta scrivendo...")
@@ -290,5 +292,10 @@ createApp({
     addresseeStatus(status) {
       document.getElementById("waiting").innerHTML = status;
     },
+    // Scrollbar function
+    topToBottomScroll() {
+      const scroll = this.$refs.mainChat
+      scroll.scrollTop = scroll.scrollHeight
+    }
   },
 }).mount("#app");
