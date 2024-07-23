@@ -33,6 +33,8 @@ body {
 .col-8,
 .col-4 {
     padding: 0;
+    min-height: calc(100vh - 40px);
+    max-height: calc(100vh - 40px);
 }
 
 .col-4 {
@@ -40,13 +42,9 @@ body {
 }
 
 /* List */
-.contacts {
-    max-height: calc(100vh - 230px);
-    min-height: calc(100vh - 230px);
-}
-
 .profile img {
     width: 50px;
+    height: 50px;
 }
 
 .input-group .search:hover {
@@ -64,7 +62,6 @@ li:hover {
 /* Chat */
 #main-chat {
     padding: 10px;
-    max-height: calc(100vh - 159px);
 }
 
 #input-section button {
