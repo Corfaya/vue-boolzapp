@@ -95,12 +95,26 @@
                                                 - 1].date) : '' }}</p>
                                         </div>
                                     </div>
-                                    <div class="icons-profile p-3 d-flex">
-                                        <a href="" class="d-sm-none d-md-block"><i
+                                    <div class="icons-profile p-3 d-flex text-secondary">
+                                        <div class="dropdown">
+                                            <a href="#" class="mx-3 d-sm-none d-md-block" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-star text-secondary"></i>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <!-- Favorites messages saved in array and shown as li -->
+                                                <li v-if="favoritesArray.length === 0">
+                                                    <a href="#" class="dropdown-item">Non sono presenti messaggi salvati</a>
+                                                </li>
+                                                <li v-else v-for="message, index in favoritesArray">
+                                                    <a href="#" class="dropdown-item"> {{ message.message }} </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" class="d-sm-none d-md-block"><i
                                                 class="fa-solid fa-search text-secondary"></i></a>
-                                        <a href="" class="mx-3 d-sm-none d-md-block"><i
+                                        <a href="#" class="mx-3 d-sm-none d-md-block"><i
                                                 class="fa-solid fa-paperclip text-secondary"></i></a>
-                                        <a href=""><i class="fa-solid fa-ellipsis-vertical text-secondary"></i></a>
+                                        <a href="#"><i class="fa-solid fa-ellipsis-vertical text-secondary"></i></a>
                                     </div>
                                 </div>
                                 <!-- MAIN CHAT -->
@@ -108,21 +122,22 @@
                                 <div id="main-chat" class="overflow d-flex flex-column">
 
                                     <div v-for="message, index in contacts[active].messages">
-                                        <div class="my-2 p-1 border d-flex align-items-center justify-content-between"
+                                        <div class="my-2 p-1 border d-flex justify-content-between"
                                             :class=" message.status == 'sent' ? 'message-sent float-end' : 'message-received float-start' ">
                                             <!-- Deleted message -->
                                             <em class="text-secondary m-1" v-if="message.message == 'Questo messaggio è stato eliminato.'"> <i class="fa-solid fa-ban m-1"></i> {{ message.message }}</em>
                                             <!-- text or images -->
-                                            <p v-else-if="message.type == 'text'" class="m-1"> {{ message.message }}</p>
-                                            <img v-else :src="message.message" alt="gif">
-                                            <div>
+                                            <p v-else-if="message.type == 'text'" class="m-1 p-1"> {{ message.message }}</p>
+                                            <img v-else :src="message.message" alt="gif" class="w_300 m-1">
+                                            <div class="d-flex flex-column">
                                                 <div class="dropdown">
                                                     <button class="border-0 btn btn-sm p-0 ms-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                         <i class="fa-solid fa-angle-down"></i>
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="">Message info</a></li>
-                                                        <li><a class="dropdown-item" href="" @click="deleteMessage(index)">Delete Message</a></li>
+                                                        <!-- add message to favorite -->
+                                                        <li><a class="dropdown-item" href="#"  @click="addToFav(message)"><i class="fa-solid fa-star text-warning"></i>Mark as favorite</a></li>
+                                                        <li><a class="dropdown-item" href="#" @click="deleteMessage(index)">Delete Message</a></li>
                                                     </ul>
                                                 </div>
                                                 <p class="m-0 fs_10 text-end text-secondary"> {{
@@ -155,7 +170,7 @@
                                             placeholder="Scrivi un messaggio" @keyup.enter="send()">
                                         <div class="input-group-append">
                                             <button v-if="!user_msg == ''"
-                                                class="input-group-text mx-3 border-0 text-secondary">
+                                                class="input-group-text mx-3 border-0 text-secondary" @click="send()">
                                                 <i class="fa-solid fa-paper-plane"></i>
                                             </button>
                                             <button v-else class="input-group-text mx-3 border-0 text-secondary">

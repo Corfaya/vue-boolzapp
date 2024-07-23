@@ -20,25 +20,29 @@ createApp({
            type: "text",
            theme: "Ahahahahahhahah 😂"
          },
-        //{
-        //   type: "text",
-        //   theme: "Scusa ma chi sei?"
-        // },
-        // {
-        //   type: "text",
-        //   theme: "Ti scrivo dopo, ora non posso"
-        // },
-        // {
-        //   type: "text",
-        //   theme: "Sto cercando di fixare il codice, ci sentiamo dopo"
-        // },
-        // {
-        //   type: "text",
-        //   theme: "Mmh mi sa che hai sbagliato numero"
-        // },
+        {
+           type: "text",
+           theme: "Scusa ma chi sei?"
+         },
+         {
+           type: "text",
+           theme: "Ti scrivo dopo, ora non posso"
+         },
+         {
+           type: "text",
+           theme: "Sto cercando di fixare il codice, ci sentiamo dopo"
+         },
+         {
+           type: "text",
+           theme: "Mmh mi sa che hai sbagliato numero"
+         },
         {
           type: "text",
           theme: "È tutta colpa delle scie chimiche"
+        },
+        {
+          type: "text",
+          src: "Ma in che senso?"
         },
         {
           type: "gif",
@@ -49,27 +53,30 @@ createApp({
           src: "https://i.pinimg.com/originals/9d/97/d3/9d97d38e98836d33d1802cbc777ef7e0.gif"
         },
         {
-          type: "text",
-          src: "Ma in che senso?"
+          type: "gif",
+          src: "https://i.pinimg.com/originals/c8/90/da/c890dac2f61612e0624ad8202ace26de.gif"
         },
-        
+        {
+          type: "gif",
+          src: "https://i.pinimg.com/originals/5e/ab/cd/5eabcd5b8a9f6edd8cfdad3f0e36dacd.gif"
+        },
+        {
+          type: "gif",
+          src: "https://i.pinimg.com/originals/04/6c/94/046c9402848d9234130ac214d903ad08.gif"
+        },
+        {
+          type: "gif",
+          src: "https://i.pinimg.com/originals/62/ce/83/62ce83ea6a15804f8be45cbc6dd4f48c.gif"
+        },
+        {
+          type: "gif",
+          src: "https://i.pinimg.com/originals/0f/09/cc/0f09cc5c3aef9fe5b883b761a6683210.gif"
+        },
+        {
+          type: "gif",
+          src: "https://i.pinimg.com/originals/6d/17/4a/6d174a29847aae4d8ce031b18271ad67.gif"
+        }
       ],
-      // answers: [
-      //   "Come vuoi",
-      //   "Non so di cosa stai parlando",
-      //   "Ahahahahahhahah 😂",
-      //   "Ok...",
-      //   "Ti scrivo dopo, ora non posso",
-      //   "Guarda, preferirei chiamarti se posso",
-      //   "Scusa ma chi sei?",
-      //   "Ti avevo chiesto di non scrivermi",
-      //   "Si stava meglio quando si stava peggio",
-      //   "Sto cercando di fixare questo codice, ci sentiamo dopo",
-      //   "Ma in che senso?",
-      //   "È tutta colpa delle scie chimiche",
-      //   "Ancora tu? Devo fare pulizia kontatti mi sa",
-      //   "Mmh mi sa che hai sbagliato numero"
-      // ],
       contacts: [
         {
           name: "Michele",
@@ -312,7 +319,8 @@ createApp({
         "🙏",        
         "👾",
         "🤡"
-      ]
+      ],
+      favoritesArray: [], //INIZIALIZZO ARRAY VUOTO
     };
   },
   methods: {
@@ -346,11 +354,6 @@ createApp({
         date: todayDate,
         type: "text"
       }
-      // let pc_message = {
-      //   message: this.randomAnswers(),
-      //   status: "received",
-      //   date: todayDate
-      // }
       // random object
       let pc_message = this.randomAnswers()
       if (!this.user_msg == "") {
@@ -422,6 +425,12 @@ createApp({
       this.user_msg += em
       let input = document.getElementById("inputMessage")
       input.focus()
-    } 
+    },
+    // favorite message
+    addToFav(msgg){
+      if(!this.favoritesArray.includes(msgg)){
+      this.favoritesArray.push(msgg)
+      }
+    }
   },
 }).mount("#app");
