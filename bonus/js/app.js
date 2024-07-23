@@ -10,19 +10,18 @@ createApp({
       answers: [
         "Come vuoi",
         "Non so di cosa stai parlando",
-        "😂",
+        "Ahahahahahhahah 😂",
         "Ok...",
         "Ti scrivo dopo, ora non posso",
         "Guarda, preferirei chiamarti se posso",
         "Scusa ma chi sei?",
-        "Ti avevo chiesto di non scrivermi più",
+        "Ti avevo chiesto di non scrivermi",
         "Si stava meglio quando si stava peggio",
         "Sto cercando di fixare questo codice, ci sentiamo dopo",
         "Ma in che senso?",
-        "L'erba del vicino è sempre più buona",
         "È tutta colpa delle scie chimiche",
-        "Non cie lo dikono!1!!.1!",
-        "Ancora tu? Devo fare pulizia kontatti"
+        "Ancora tu? Devo fare pulizia kontatti mi sa",
+        "Mmh mi sa che hai sbagliato numero"
       ],
       contacts: [
         {
@@ -214,8 +213,9 @@ createApp({
     };
   },
   methods: {
-    dateWithoutSec(el) { // date format function used in html
-      return el.split(" ")[1].slice(0, 5);
+    dateWithoutSec(dateToFormat) {
+      // select second element of the array resulting from the split
+      return dateToFormat.split(" ")[1].slice(0, 5);
     },
     hours() {
       return DateTime.now().toFormat("HH:mm")
